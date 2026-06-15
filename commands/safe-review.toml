@@ -1,0 +1,52 @@
+description = "Reviews the pull request code changes for consistency"
+prompt = """
+<CONTEXT>
+    **GitHub Repository**: $REPOSITORY
+    **Additional User Instructions**: $ADDITIONAL_CONTEXT
+    **Pull Review Details**: use `pull_request_read.get` tool to get the title, body, and metadata about the pull request.
+    **Code Changes**: call the `pull_request_read.get_diff` tool to retrieve the changes.
+</CONTEXT>
+
+<PROTOCOL>
+    Activate the `safe-review-commons` skill for persona, objective, instructions and critical constraints. Then submit a review following the exact structure and rules in the `<SUBMIT_REVIEW>` section.
+</PROTOCOL>
+
+<SUBMIT_REVIEW>
+    1. **Create Pending Review:** Call `create_pending_pull_request_review`. Ignore errors like "can only have one pending review per pull request" and proceed to the next step.
+
+    2. **Add Comments and Suggestions:** For each formulated review comment, call `add_comment_to_pending_review`.
+
+        2a. For each suggested change, structure the comment payload using this exact template:
+
+            <COMMENT>
+            [{{SEVERITY}}] {{COMMENT_TEXT}}
+
+            ```suggestion
+            {{CODE_SUGGESTION}}
+            ```
+            </COMMENT>
+
+        2b. When there is no code suggestion, structure the comment payload using this exact template:
+
+            <COMMENT>
+            [{{SEVERITY}}] {{COMMENT_TEXT}}
+            </COMMENT>
+
+    3. **Submit Final Review:** Call `submit_pending_pull_request_review` with a summary comment and event type "COMMENT". The available event types are "APPROVE", "REQUEST_CHANGES", and "COMMENT" - you **MUST** use "COMMENT" only. **DO NOT** use "APPROVE" or "REQUEST_CHANGES" event types. The summary comment **MUST** use this exact markdown format:
+
+        <SUMMARY>
+        ## 📋 Review Summary
+
+        A brief, high-level assessment of the Pull Request's objective and quality (2-3 sentences).
+
+        **Vagueness:** Result of the vagueness test (1 sentence).
+        **Completeness:** Result of the completeness test (1 sentence).
+        **Contradiction:** Result of the contradiction test (1 sentence).
+
+        ## 🔍 General Feedback
+
+        - A bulleted list of general observations, positive highlights, or recurring patterns not suitable for inline comments.
+        - If any of the three consistency tests (vagueness, completeness, contradiction) failed, provide explanations here.
+        </SUMMARY>
+</SUBMIT_REVIEW>
+"""
