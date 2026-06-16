@@ -32,7 +32,7 @@ prompt = """
             [{{SEVERITY}}] {{COMMENT_TEXT}}
             </COMMENT>
 
-    3. **Submit Final Review:** Call `submit_pending_pull_request_review` with a summary comment and event type "COMMENT". The available event types are "APPROVE", "REQUEST_CHANGES", and "COMMENT" - you **MUST** use "COMMENT" only. **DO NOT** use "APPROVE" or "REQUEST_CHANGES" event types. The summary comment **MUST** use this exact markdown format:
+    3. **Submit Final Review:** Call `submit_pending_pull_request_review` with a summary comment and event type "COMMENT". You **MUST** use "COMMENT" only. The summary comment **MUST** use this exact markdown format:
 
         <SUMMARY>
         ## 📋 Review Summary
@@ -43,7 +43,7 @@ prompt = """
         **Completeness:** Result of the completeness test (1 sentence).
         **Contradiction:** Result of the contradiction test (1 sentence).
 
-        ## 🔍 General Feedback
+        ## 🔍 Feedback
 
         - A bulleted list of general observations, positive highlights, or recurring patterns not suitable for inline comments.
         - If any of the three consistency tests (vagueness, completeness, contradiction) failed, provide explanations here.
