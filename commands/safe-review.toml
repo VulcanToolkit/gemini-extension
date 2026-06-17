@@ -9,6 +9,8 @@ prompt = """
 
 <PROTOCOL>
     Activate the `safe-review-commons` skill for persona, objective, instructions and critical constraints. Then submit a review following the exact structure and rules in the `<SUBMIT_REVIEW>` section.
+
+    The report must be submitted using `submit_pending_pull_request_review` and event type "COMMENT" for the task to be completed.
 </PROTOCOL>
 
 <SUBMIT_REVIEW>
