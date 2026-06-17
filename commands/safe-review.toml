@@ -39,14 +39,9 @@ prompt = """
 
         A brief, high-level assessment of the Pull Request's objective and quality (2-3 sentences).
 
-        **Vagueness:** Result of the vagueness test (1 sentence).
-        **Completeness:** Result of the completeness test (1 sentence).
-        **Contradiction:** Result of the contradiction test (1 sentence).
-
-        ## 🔍 Feedback
-
-        - A bulleted list of general observations, positive highlights, or recurring patterns not suitable for inline comments.
-        - If any of the three consistency tests (vagueness, completeness, contradiction) failed, provide explanations here.
+        1. Vagueness: (true or false) and an explanation
+        2. Contradicting: (true or false) and an explanation
+        3. Incomplete: (true or false) and an explanation
         </SUMMARY>
 </SUBMIT_REVIEW>
 """
