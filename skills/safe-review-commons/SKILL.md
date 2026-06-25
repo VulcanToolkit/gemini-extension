@@ -102,22 +102,46 @@ A commit message is **Incomplete** if a **Semantically Meaningful** and **Non-En
 
 You must return a report adhering to the following structure:
 
-1. **Vagueness:** (true or false) and an explanation
-2. **Contradicting:** (true or false) and an explanation
-3. **Incomplete:** (true or false) and an explanation
+1. **Vagueness:** (OK or concerning) and an explanation
+2. **Contradicting:** (OK or concerning) and an explanation
+3. **Incomplete:** (OK or concerning) and an explanation
 
-The explanation should be a concise statement explaining the reasoning for why the failure type is true or false.
+The result for each consistency check must be either "OK" or "concerning". The explanation for each consistency check shoud be a concise statement explaining the reasoning for the result.
+
+If the Vagueness test failed, then only output a result for Vagueness and append the following statement: "Code change consistency could not be evaluated because the commit message was too vague."
 
 **Example Output (Vagueness):**
 
-1. **Vagueness: true**
+1. **Vagueness: concerning**
 
     The commit message is vague as it mentions 'fixes' without context
 
-2. **Contradicting: false**
+Code change consistency could not be evaluated because the commit message was too vague.
+
+**Example Output (Contradicting):**
+
+1. **Vagueness: OK**
+
+    The commit message describes what was changed and why.
+
+2. **Contradicting: concerning**
+
+    The commit message mentioned a buffer size of 4096 but only allocated 2048 in the code.
+
+3. **Incomplete: OK**
+
+    All code changes are mentioned in the commit message.
+
+**Example Output (Incomplete):**
+
+1. **Vagueness: OK**
+
+    The commit message describes what was changed and why.
+
+2. **Contradicting: OK**
 
     The commit appears to implement the fixes correctly.
 
-3. **Incomplete: false**
+3. **Incomplete: concerning**
 
-    All code changes are mentioned in the commit message.
+    The commit message does not explain the addition of new network calls in the code.
