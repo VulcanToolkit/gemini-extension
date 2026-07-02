@@ -100,48 +100,113 @@ A commit message is **Incomplete** if a **Semantically Meaningful** and **Non-En
 
 ## Output Requirements
 
-You must return a report adhering to the following structure:
+You must return a **JSON object** adhering to the following schema:
 
-1. **Vagueness:** (OK or concerning) and an explanation
-2. **Contradicting:** (OK or concerning) and an explanation
-3. **Incomplete:** (OK or concerning) and an explanation
-
-The result for each consistency check must be either "OK" or "concerning". The explanation for each consistency check shoud be a concise statement explaining the reasoning for the result.
-
-If the Vagueness test failed, then only output a result for Vagueness and append the following statement: "Code change consistency could not be evaluated because the commit message was too vague."
+{
+  "type": "object",
+  "properties": {
+    "properties": {
+      "vagueness": {
+        "type": "object",
+        "properties": {
+          "concerning": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "concerning",
+          "reason"
+        ]
+      },
+      "contradicting": {
+        "type": "object",
+        "properties": {
+          "concerning": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "concerning",
+          "reason"
+        ]
+      },
+      "incomplete": {
+        "type": "object",
+        "properties": {
+          "concerning": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "concerning",
+          "reason"
+        ]
+      }
+    },
+    "required": [
+      "vagueness",
+      "contradicting",
+      "incomplete"
+    ]
+  }
+}
 
 **Example Output (Vagueness):**
 
-1. **Vagueness: concerning**
-
-    The commit message is vague as it mentions 'fixes' without context
-
-Code change consistency could not be evaluated because the commit message was too vague.
+{
+  "vagueness": {
+    "concerning": true,
+    "reason": "The commit message is vague as it mentions 'fixes' without context."
+  },
+  "contradicting": {
+    "concerning": false,
+    "reason": "Contradiction could not be evaluated because the commit message was too vague."
+  },
+  "incomplete": {
+    "concerning": false,
+    "reason": "Incompleteness could not be evaluated because the commit message was too vague."
+  }
+}
 
 **Example Output (Contradicting):**
 
-1. **Vagueness: OK**
-
-    The commit message describes what was changed and why.
-
-2. **Contradicting: concerning**
-
-    The commit message mentioned a buffer size of 4096 but only allocated 2048 in the code.
-
-3. **Incomplete: OK**
-
-    All code changes are mentioned in the commit message.
+{
+  "vagueness": {
+    "concerning": false,
+    "reason": "The commit message describes what was changed and why."
+  },
+  "contradicting": {
+    "concerning": true,
+    "reason": "The commit message mentioned a buffer size of 4096 but only allocated 2048 in the code."
+  },
+  "incomplete": {
+    "concerning": false,
+    "reason": "All code changes are mentioned in the commit message."
+  }
+}
 
 **Example Output (Incomplete):**
 
-1. **Vagueness: OK**
-
-    The commit message describes what was changed and why.
-
-2. **Contradicting: OK**
-
-    The commit appears to implement the fixes correctly.
-
-3. **Incomplete: concerning**
-
-    The commit message does not explain the addition of new network calls in the code.
+{
+  "vagueness": {
+    "concerning": false,
+    "reason": "The commit message describes what was changed and why."
+  },
+  "contradicting": {
+    "concerning": false,
+    "reason": "The commit appears to implement the fixes correctly."
+  },
+  "incomplete": {
+    "concerning": true,
+    "reason": "The commit message does not explain the addition of new network calls in the code."
+  }
+}

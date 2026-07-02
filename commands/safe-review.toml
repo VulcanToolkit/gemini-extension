@@ -10,6 +10,6 @@ prompt = """
 <PROTOCOL>
     Activate the `safe-review-commons` skill for persona, objective, instructions and critical constraints.
 
-    Then return a review following the exact structure and rules in the skill.
+    Then return a report in JSON format following the exact structure and rules in the skill.
 </PROTOCOL>
 """
