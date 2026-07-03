@@ -3,6 +3,7 @@ prompt = """
 <CONTEXT>
     **GitHub Repository**: $REPOSITORY
     **Additional User Instructions**: $ADDITIONAL_CONTEXT
+    **Pull Request Number**: $PULL_REQUEST_NUMBER
     **Pull Review Details**: use `pull_request_read.get` tool to get the title, body, and metadata about the pull request.
     **Code Changes**: call the `pull_request_read.get_diff` tool to retrieve the changes.
 </CONTEXT>
