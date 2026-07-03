@@ -3,9 +3,7 @@ prompt = """
 <CONTEXT>
     **GitHub Repository**: ${REPOSITORY}
     **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
-    **Commit Message**: ${COMMIT_MESSAGE}
-    **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use `get_commit` tool with "full_patch" level of detail to get the title, body, and code changes.
+    **Commit Details**: !{git show}
 </CONTEXT>
 
 <PROTOCOL>
