@@ -1,0 +1,14 @@
+description = "Reviews the commit code changes for consistency"
+prompt = """
+<CONTEXT>
+    **GitHub Repository**: $REPOSITORY
+    **Additional User Instructions**: $ADDITIONAL_CONTEXT
+    **Commit Details**: use `get_commit` tool with "full_patch" level of detail to get the title, body, and code changes.
+</CONTEXT>
+
+<PROTOCOL>
+    Activate the `safe-review-commons` skill for persona, objective, instructions and critical constraints.
+
+    Then return a report in JSON format following the exact structure and rules in the skill.
+</PROTOCOL>
+"""
