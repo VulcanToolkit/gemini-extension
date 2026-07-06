@@ -1,6 +1,6 @@
 ---
 name: safe-review-commons
-description: Common guidelines, persona and critical constraints for performing safe code reviews. Use this skill when performing a /safe-code-review command.
+description: Common guidelines, persona and critical constraints for performing safe code reviews. Use this skill when performing a /safe-review-commit or /safe-review-pr command.
 user-invokable: false
 ---
 # Safe Review Commons
