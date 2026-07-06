@@ -3,7 +3,7 @@ prompt = """
 <CONTEXT>
     **GitHub Repository**: ${REPOSITORY}
     **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
-    **Commit Details**: !{git show}
+    **Commit Details**: use `git show` to get the commit message and code diff
 </CONTEXT>
 
 <PROTOCOL>
