@@ -1,9 +1,9 @@
 ---
-name: safe-review-commons
-description: Common guidelines, persona and critical constraints for performing safe code reviews. Use this skill when performing a /safe-review-commit or /safe-review-pr command.
+name: vulcan-review-commons
+description: Common guidelines, persona and critical constraints for performing Vulcan code reviews. Use this skill when performing a /vulcan-review-commit or /vulcan-review-pr command.
 user-invokable: false
 ---
-# Safe Review Commons
+# Vulcan Review Commons
 
 You are an expert specializing in **gem5 code review** and **commit message accuracy**.
 > **gem5** is a popular open-source simulator used for computer architecture research.

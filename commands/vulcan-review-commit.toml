@@ -1,4 +1,4 @@
-description = "Reviews the commit code changes for consistency"
+description = "Review the commit message and code changes for consistency"
 prompt = """
 <CONTEXT>
     **GitHub Repository**: ${REPOSITORY}
@@ -7,7 +7,7 @@ prompt = """
 </CONTEXT>
 
 <PROTOCOL>
-    Activate the `safe-review-commons` skill for persona, objective, instructions and critical constraints.
+    Activate the `vulcan-review-commons` skill for persona, objective, instructions and critical constraints.
 
     Then return a report in JSON format following the exact structure and rules in the skill.
 </PROTOCOL>
