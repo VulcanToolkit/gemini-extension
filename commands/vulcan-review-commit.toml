@@ -4,7 +4,7 @@ prompt = """
     **GitHub Repository**: ${REPOSITORY}
     **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
     **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use `get_commit` to get the commit message and code diff
+    **Commit Details**: use the `get_commit` tool with sha=${COMMIT_SHA} to get the commit message and code diff
 </CONTEXT>
 
 <PROTOCOL>
