@@ -1,10 +1,11 @@
 description = "Review the commit message and code changes for consistency"
 prompt = """
 <CONTEXT>
-    **GitHub Repository**: ${REPOSITORY}
-    **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
+    **Repository Owner**: ${REPO_OWNER}
+    **Repository Name**: ${REPO_NAME}
     **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use the `get_commit` tool with sha=${COMMIT_SHA} to get the commit message and code diff
+    **Commit Details**: use the `get_commit` tool with sha ${COMMIT_SHA} to get the commit message and code diff
+    **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
 </CONTEXT>
 
 <PROTOCOL>
