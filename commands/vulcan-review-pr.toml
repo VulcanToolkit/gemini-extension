@@ -1,5 +1,9 @@
 description = "Review the pull request message and code changes for consistency"
 prompt = """
+<OBJECTIVE>
+    Your task is to evaluate pull request ${PULL_REQUEST_NUMBER} on GitHub repository ${REPOSITORY} for code consistency.
+</OBJECTIVE>
+
 <CONTEXT>
     **Repository Owner**: ${REPO_OWNER}
     **Repository Name**: ${REPO_NAME}
@@ -7,6 +11,7 @@ prompt = """
     **Pull Review Details**: use `pull_request_read.get` tool to get the title, body, and metadata about the pull request.
     **Code Changes**: call the `pull_request_read.get_diff` tool to retrieve the changes.
     **Additional User Instructions**: $ADDITIONAL_CONTEXT
+    **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
 </CONTEXT>
 
 <PROTOCOL>
