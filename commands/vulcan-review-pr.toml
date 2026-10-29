@@ -8,8 +8,8 @@ prompt = """
     **Repository Owner**: ${REPO_OWNER}
     **Repository Name**: ${REPO_NAME}
     **Pull Request Number**: $PULL_REQUEST_NUMBER
-    **Pull Review Details**: use `pull_request_read.get` tool to get the title, body, and metadata about the pull request.
-    **Code Changes**: call the `pull_request_read.get_diff` tool to retrieve the changes.
+    **Pull Review Details**: use the `github_mcp_pull_request_read` tool with method `get` to get the title, body, and metadata about the pull request.
+    **Code Changes**: use the `github_mcp_pull_request_read` tool with method `get_diff` to retrieve the changes.
     **Additional User Instructions**: $ADDITIONAL_CONTEXT
     **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
 </CONTEXT>

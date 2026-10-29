@@ -1,6 +1,6 @@
 {
     "name": "vulcan",
     "description": "Commit message and code consistency checker",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "contextFileName": "GEMINI.md"
 }
