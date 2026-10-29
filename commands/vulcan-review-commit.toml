@@ -8,7 +8,7 @@ prompt = """
     **Repository Owner**: ${REPO_OWNER}
     **Repository Name**: ${REPO_NAME}
     **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use the GitHub MCP `get_commit` tool with sha ${COMMIT_SHA} to get the commit message and code diff
+    **Commit Details**: use the `mcp_github_get_commit` tool with sha ${COMMIT_SHA} to get the commit message and code diff
     **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
     **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
 </CONTEXT>
