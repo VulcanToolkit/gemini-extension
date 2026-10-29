@@ -1,21 +1,16 @@
 description = "Review the commit message and code changes for consistency"
 prompt = """
-<OBJECTIVE>
-    Your task is to evaluate commit ${COMMIT_SHA} from GitHub repository ${REPOSITORY} for code consistency.
-</OBJECTIVE>
+# Objective
 
-<CONTEXT>
-    **Repository Owner**: ${REPO_OWNER}
-    **Repository Name**: ${REPO_NAME}
-    **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use the `mcp_github_get_commit` tool with sha ${COMMIT_SHA} and detail set to `full_patch` to get the commit message and code diff
-    **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
-    **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
-</CONTEXT>
+Your task is to evaluate commit {{args}} for code consistency.
 
-<PROTOCOL>
-    Activate the `vulcan-review-commons` skill for persona, objective, instructions and critical constraints.
+# Context
 
-    Then return a report in JSON format following the exact structure and rules in the skill.
-</PROTOCOL>
+@{vulcan-context.md}
+
+# Protocol
+
+1. Use the `mcp_github_get_commit` tool with sha {{args}} and detail set to `full_patch` to get the commit message and code diff.
+2. Activate the `vulcan-review-commons` skill for persona, objective, instructions and critical constraints.
+3. Return a report in JSON format following the exact structure and rules in the skill.
 """

@@ -1,22 +1,18 @@
 description = "Review the pull request message and code changes for consistency"
 prompt = """
-<OBJECTIVE>
-    Your task is to evaluate pull request ${PULL_REQUEST_NUMBER} on GitHub repository ${REPOSITORY} for code consistency.
-</OBJECTIVE>
 
-<CONTEXT>
-    **Repository Owner**: ${REPO_OWNER}
-    **Repository Name**: ${REPO_NAME}
-    **Pull Request Number**: $PULL_REQUEST_NUMBER
-    **Pull Review Details**: use the `github_mcp_pull_request_read` tool with method `get` to get the title, body, and metadata about the pull request.
-    **Code Changes**: use the `github_mcp_pull_request_read` tool with method `get_diff` to retrieve the changes.
-    **Additional User Instructions**: $ADDITIONAL_CONTEXT
-    **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
-</CONTEXT>
+# Objective
 
-<PROTOCOL>
-    Activate the `vulcan-review-commons` skill for persona, objective, instructions and critical constraints.
+Your task is to evaluate pull request {{args}} for code consistency.
 
-    Then return a report in JSON format following the exact structure and rules in the skill.
-</PROTOCOL>
+# Context
+
+@{vulcan-context.md}
+
+# Protocol
+
+1. Use the `github_mcp_pull_request_read` tool with method `get` and pullNumber {{args}} to get the title, body, and metadata about the pull request.
+2. Use the `github_mcp_pull_request_read` tool with method `get_diff` and pullNumber {{args}} to retrieve the changes.
+3. Activate the `vulcan-review-commons` skill for persona, objective, instructions and critical constraints.
+4. Return a report in JSON format following the exact structure and rules in the skill.
 """
