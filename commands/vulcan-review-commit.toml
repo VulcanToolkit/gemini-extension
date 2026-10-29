@@ -1,11 +1,16 @@
 description = "Review the commit message and code changes for consistency"
 prompt = """
+<OBJECTIVE>
+    Your task is to evaluate commit ${COMMIT_SHA} from GitHub repository ${REPOSITORY} for code consistency.
+</OBJECTIVE>
+
 <CONTEXT>
     **Repository Owner**: ${REPO_OWNER}
     **Repository Name**: ${REPO_NAME}
     **Commit SHA**: ${COMMIT_SHA}
-    **Commit Details**: use the `get_commit` tool with sha ${COMMIT_SHA} to get the commit message and code diff
+    **Commit Details**: use the GitHub MCP `get_commit` tool with sha ${COMMIT_SHA} to get the commit message and code diff
     **Additional User Instructions**: ${ADDITIONAL_CONTEXT}
+    **Local Files**: the local files are from a stable version of gem5 and may provide background information if needed
 </CONTEXT>
 
 <PROTOCOL>
